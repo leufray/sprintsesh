@@ -114,7 +114,7 @@ export default function ConnectionsPage() {
           <ArrowLeft size={16} /> Go back
         </button>
         <StepIndicator current={3} />
-        <button className="btn-next" onClick={() => router.push("/onboarding/review")}>
+        <button className="btn-next" onClick={() => router.push("/review")}>
           Review your order <ArrowRight size={16} />
         </button>
       </div>
