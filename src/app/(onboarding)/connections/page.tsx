@@ -1,9 +1,9 @@
 "use client";
 
 import { useRouter } from "next/navigation";
-import Image from "next/image";
 import { ArrowLeft, ArrowRight, Check, GitBranch, Database, Map, Smartphone } from "lucide-react";
 import AppShell from "../../../../components/layout/AppShell";
+import StepIndicator from "../../../../components/ui/StepIndicator";
 
 const autoProvisioned = [
   { icon: Database, name: "Supabase", desc: "Database, auth, and storage", status: "Provisioned" },
@@ -20,7 +20,8 @@ export default function ConnectionsPage() {
 
   return (
     <AppShell hideTopbar>
-      <div className="onboarding-content">
+      <div className="onboarding-scroll-area">
+        <div className="onboarding-content">
         <h1 className="page-title">Set up connections</h1>
         <p className="page-subtitle">
           Sprintsesh provisions most services automatically. You only need to
@@ -67,13 +68,14 @@ export default function ConnectionsPage() {
             ))}
           </div>
         </div>
+        </div>
       </div>
 
       <div className="onboarding-bottom">
         <button className="btn-back" onClick={() => router.back()}>
           <ArrowLeft size={16} /> Go back
         </button>
-        <Image src="/step-3.png" alt="Step 3 of 4" width={240} height={8} className="onboarding-step" />
+        <StepIndicator current={3} />
         <button className="btn-next" onClick={() => router.push("/review")}>
           Review your order <ArrowRight size={16} />
         </button>

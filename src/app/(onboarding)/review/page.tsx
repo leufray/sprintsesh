@@ -1,9 +1,9 @@
 "use client";
 
 import { useRouter } from "next/navigation";
-import Image from "next/image";
 import { ArrowLeft, ArrowRight, Zap, Check, X } from "lucide-react";
 import AppShell from "../../../../components/layout/AppShell";
+import StepIndicator from "../../../../components/ui/StepIndicator";
 
 const agents = [
   { role: "Architect", model: "Claude Opus 4" },
@@ -20,8 +20,9 @@ export default function ReviewPage() {
 
   return (
     <AppShell hideTopbar>
-      <div className="onboarding-content">
-        <h1 className="page-title">Review your order</h1>
+      <div className="onboarding-scroll-area">
+        <div className="onboarding-content">
+          <h1 className="page-title">Review your order</h1>
         <p className="page-subtitle">Studio Plan &middot; Balanced Sprint</p>
 
         <div className="review-columns">
@@ -92,6 +93,7 @@ export default function ReviewPage() {
               </div>
             </div>
           </div>
+          </div>
         </div>
       </div>
 
@@ -99,7 +101,7 @@ export default function ReviewPage() {
         <button className="btn-back" onClick={() => router.back()}>
           <ArrowLeft size={16} /> Go back
         </button>
-        <Image src="/step-4.png" alt="Step 4 of 4" width={240} height={8} className="onboarding-step" />
+        <StepIndicator current={4} />
         <button className="btn-next" onClick={() => router.push("/payment")}>
           Continue to payment <ArrowRight size={16} />
         </button>

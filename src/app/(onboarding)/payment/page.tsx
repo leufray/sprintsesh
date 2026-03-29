@@ -1,17 +1,18 @@
 "use client";
 
 import { useRouter } from "next/navigation";
-import Image from "next/image";
 import { Lock, CreditCard, ArrowLeft, ArrowRight } from "lucide-react";
 import AppShell from "../../../../components/layout/AppShell";
+import StepIndicator from "../../../../components/ui/StepIndicator";
 
 export default function PaymentPage() {
   const router = useRouter();
 
   return (
     <AppShell hideTopbar>
-      <div className="onboarding-content">
-        <h1 className="page-title">Payment</h1>
+      <div className="onboarding-scroll-area">
+        <div className="onboarding-content">
+          <h1 className="page-title">Payment</h1>
         <p className="page-subtitle">Complete your subscription to start building.</p>
 
         <div className="pay-layout">
@@ -60,6 +61,7 @@ export default function PaymentPage() {
               <div className="pay-secured"><Lock size={12} /><span>Secured by Stripe</span></div>
             </div>
           </div>
+          </div>
         </div>
       </div>
 
@@ -67,7 +69,7 @@ export default function PaymentPage() {
         <button className="btn-back" onClick={() => router.back()}>
           <ArrowLeft size={16} /> Go back
         </button>
-        <Image src="/step-4.png" alt="Step 4 of 4" width={240} height={8} className="onboarding-step" />
+        <StepIndicator current={4} />
         <button className="btn-next" onClick={() => router.push("/success")}>
           Pay and start building <ArrowRight size={16} />
         </button>

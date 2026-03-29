@@ -3,14 +3,16 @@
 import { useRouter } from "next/navigation";
 import { Rocket, Bell, Plus, ArrowRight } from "lucide-react";
 import AppShell from "../../../../components/layout/AppShell";
+import StepIndicator from "../../../../components/ui/StepIndicator";
 
 export default function SuccessPage() {
   const router = useRouter();
 
   return (
     <AppShell hideTopbar>
-      <div className="onboarding-content">
-        <div className="success-content">
+      <div className="onboarding-scroll-area">
+        <div className="onboarding-content">
+          <div className="success-content">
           <div className="success-icon"><Rocket size={48} /></div>
           <h1 className="page-title">Sprintimer is being built</h1>
           <p className="page-subtitle">
@@ -39,12 +41,13 @@ export default function SuccessPage() {
             <p className="success-new-desc">Start building another app while this one is in progress.</p>
             <button className="success-new-btn"><Plus size={16} />Start new project</button>
           </div>
+          </div>
         </div>
       </div>
 
       <div className="onboarding-bottom">
         <div />
-        <div />
+        <StepIndicator current={4} />
         <button className="btn-next" onClick={() => router.push("/projects/demo")}>
           Go to build screen <ArrowRight size={16} />
         </button>
