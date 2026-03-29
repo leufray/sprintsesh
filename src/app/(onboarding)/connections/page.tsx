@@ -1,7 +1,7 @@
 "use client";
 
 import { useRouter } from "next/navigation";
-import { ArrowLeft, ArrowRight, Download, ExternalLink } from "lucide-react";
+import { ArrowLeft, ArrowRight, Download } from "lucide-react";
 import Image from "next/image";
 import AppShell from "../../../../components/layout/AppShell";
 import StepIndicator from "../../../../components/ui/StepIndicator";
@@ -52,8 +52,9 @@ export default function ConnectionsPage() {
               <Image
                 src="/ss-logo.png"
                 alt="Sprintsesh"
-                width={40}
                 height={40}
+                width={0}
+                sizes="40px"
                 className="conn-engine-logo"
               />
               <div className="conn-engine-info">
