@@ -104,7 +104,7 @@ export default function ConnectionsPage() {
           {/* Bottom notice */}
           <div className="conn-notice">
             Required services must be connected before your sprint starts.
-            Optional services can be added anytime from your project board.
+            Optional services can be added anytime.
           </div>
         </div>
       </div>

@@ -23,7 +23,19 @@ export default function ReviewPage() {
       <div className="onboarding-scroll-area">
         <div className="onboarding-content">
           <h1 className="page-title">Review your order</h1>
-        <p className="page-subtitle">Studio Plan &middot; Balanced Sprint</p>
+        <p className="page-subtitle">Check to make sure everything looks good before proceeding. Your sprint will start automatically after payment. Then you can go live your life while we build.</p>
+
+<div className="sub-requirement">
+  <div className="sub-requirement-left">
+    <span className="sub-requirement-tier">Studio Plan</span>
+    <span className="sub-requirement-sep">&middot;</span>
+    <span className="sub-requirement-app">Share Sprint</span>
+  </div>
+  <div className="sub-requirement-right">
+    <span className="sub-requirement-amount">$150</span>
+    <span className="sub-requirement-label">/mo</span>
+  </div>
+</div>
 
         <div className="review-columns">
 
