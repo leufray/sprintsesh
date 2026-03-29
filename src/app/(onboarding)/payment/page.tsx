@@ -65,15 +65,6 @@ export default function PaymentPage() {
         </div>
       </div>
 
-      <div className="onboarding-bottom">
-        <button className="btn-back" onClick={() => router.back()}>
-          <ArrowLeft size={16} /> Go back
-        </button>
-        <StepIndicator current={4} />
-        <button className="btn-next" onClick={() => router.push("/success")}>
-          Pay and start building <ArrowRight size={16} />
-        </button>
-      </div>
     </AppShell>
   );
 }

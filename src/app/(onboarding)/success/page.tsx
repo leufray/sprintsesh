@@ -16,8 +16,7 @@ export default function SuccessPage() {
           <div className="success-icon"><Rocket size={48} /></div>
           <h1 className="page-title">Sprintimer is being built</h1>
           <p className="page-subtitle">
-            Your AI team is writing the product brief, designing screens, and
-            setting up the project structure. This usually takes 10–14 hours.
+            Your AI team is writing the brief and setting up the board. First sprint tasks will be ready shortly. You can close this window, we will notify you when it’s ready.
           </p>
 
           <div className="success-status">
@@ -45,13 +44,6 @@ export default function SuccessPage() {
         </div>
       </div>
 
-      <div className="onboarding-bottom">
-        <div />
-        <StepIndicator current={4} />
-        <button className="btn-next" onClick={() => router.push("/projects/demo")}>
-          Go to build screen <ArrowRight size={16} />
-        </button>
-      </div>
     </AppShell>
   );
 }

@@ -46,10 +46,12 @@ export default function ReviewPage() {
               <button className="review-edit" onClick={() => router.push("/sprint-plan")}>Edit</button>
             </div>
             <div className="review-app-row">
-              <div className="review-app-icon"><Activity size={20} /></div>
+              <div className="review-app-icon"><Activity size={24} /></div>
               <div className="review-app-info">
                 <span className="review-app-name">Sprintimer</span>
-                <span className="review-app-sub">iOS &amp; Android &bull; 2 sprints (10&ndash;14 hrs)</span>
+                <span className="review-app-sub">iOS &amp; Android</span>
+                <span className="review-app-sub">2 sprints &bull; 10&ndash;14 hrs</span>
+
               </div>
               <div className="review-app-cost">
                 <Zap size={16} />
@@ -57,7 +59,7 @@ export default function ReviewPage() {
               </div>
             </div>
             <div className="review-divider" />
-            <div className="review-detail-row"><span>Plan</span><span>Balanced</span></div>
+            <div className="review-detail-row"><span>Plan</span><span>Share</span></div>
             <div className="review-detail-row"><span>AI Team</span><span>7 agents</span></div>
           </div>
 
@@ -92,9 +94,9 @@ export default function ReviewPage() {
             <span className="review-section-title">AI AGENT TEAM</span>
             <div className="review-agents">
               {agents.map((a) => (
-                <div key={a.role} className="review-agent">
-                  <span className="review-agent-role">{a.role}</span>
-                  <span className="review-agent-model">{a.model}</span>
+                <div key={a.role} className="sprint-plan-agent">
+                  <span className="sprint-plan-agent-role">{a.role}</span>
+                  <span className="sprint-plan-agent-model">{a.model}</span>
                 </div>
               ))}
             </div>
