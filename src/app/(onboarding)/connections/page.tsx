@@ -1,18 +1,36 @@
 "use client";
 
 import { useRouter } from "next/navigation";
-import { ArrowLeft, ArrowRight, Check, GitBranch, Database, Map, Smartphone } from "lucide-react";
+import { ArrowLeft, ArrowRight, Download, ExternalLink } from "lucide-react";
+import Image from "next/image";
 import AppShell from "../../../../components/layout/AppShell";
 import StepIndicator from "../../../../components/ui/StepIndicator";
 
-const autoProvisioned = [
-  { icon: Database, name: "Supabase", desc: "Database, auth, and storage", status: "Provisioned" },
-  { icon: Map, name: "Mapbox", desc: "Maps and GPS services", status: "Provisioned" },
-  { icon: Smartphone, name: "Expo", desc: "Mobile builds for iOS and Android", status: "Provisioned" },
-];
-
-const userConnected = [
-  { icon: GitBranch, name: "GitHub", desc: "Code repository and version control", required: true, connected: false },
+const connectionRows = [
+  {
+    category: "Code Repository",
+    provider: "GitHub",
+    desc: "Your code is saved here, and you own it forever.",
+    required: true,
+  },
+  {
+    category: "Analytics",
+    provider: "Mixpanel",
+    desc: "User behavior, funnels, and retention metrics.",
+    required: false,
+  },
+  {
+    category: "Subscriptions",
+    provider: "RevenueCat",
+    desc: "In-app purchases and paywall management.",
+    required: false,
+  },
+  {
+    category: "User Emails",
+    provider: "Resend",
+    desc: "Account verification and milestone notifications.",
+    required: false,
+  },
 ];
 
 export default function ConnectionsPage() {
@@ -22,52 +40,71 @@ export default function ConnectionsPage() {
     <AppShell hideTopbar>
       <div className="onboarding-scroll-area">
         <div className="onboarding-content">
-        <h1 className="page-title">Set up connections</h1>
-        <p className="page-subtitle">
-          Sprintsesh provisions most services automatically. You only need to
-          connect services that require your account.
-        </p>
+          <h1 className="page-title">Set up connections</h1>
+          <p className="page-subtitle">
+            These services will power your app behind the scenes. Connect them
+            once before the sprint starts and we&rsquo;ll handle the rest.
+          </p>
 
-        <div className="conn-section">
-          <h3 className="conn-section-label">AUTO-PROVISIONED</h3>
-          <div className="conn-list">
-            {autoProvisioned.map((svc) => (
-              <div key={svc.name} className="conn-item">
-                <div className="conn-item-left">
-                  <div className="conn-item-icon conn-item-icon--green"><svc.icon size={20} /></div>
-                  <div className="conn-item-info">
-                    <span className="conn-item-name">{svc.name}</span>
-                    <span className="conn-item-desc">{svc.desc}</span>
-                  </div>
-                </div>
-                <div className="conn-item-status conn-item-status--connected">
-                  <Check size={14} />{svc.status}
-                </div>
+          {/* Engine card */}
+          <div className="conn-engine-card">
+            <div className="conn-engine-left">
+              <Image
+                src="/ss-logo.png"
+                alt="Sprintsesh"
+                width={40}
+                height={40}
+                className="conn-engine-logo"
+              />
+              <div className="conn-engine-info">
+                <span className="conn-engine-title">Sprintsesh Engine</span>
+                <span className="conn-engine-subtitle">
+                  MacOS &bull; OS X 10.13 High Sierra or newer
+                </span>
               </div>
-            ))}
+            </div>
+            <div className="conn-engine-right">
+              <span className="conn-row-label conn-row-label--required">Required</span>
+              <button className="conn-download-btn">
+                <Download size={14} />
+                Download
+              </button>
+            </div>
           </div>
-        </div>
 
-        <div className="conn-section">
-          <h3 className="conn-section-label">REQUIRES YOUR ACCOUNT</h3>
-          <div className="conn-list">
-            {userConnected.map((svc) => (
-              <div key={svc.name} className="conn-item">
-                <div className="conn-item-left">
-                  <div className="conn-item-icon"><svc.icon size={20} /></div>
-                  <div className="conn-item-info">
-                    <span className="conn-item-name">{svc.name}</span>
-                    <span className="conn-item-desc">{svc.desc}</span>
+          {/* Connection rows */}
+          <div className="conn-rows">
+            {connectionRows.map((row) => (
+              <div key={row.provider} className="conn-row">
+                <div className="conn-row-left">
+                  <div className="conn-row-name">
+                    <span className="conn-row-category">{row.category}</span>
+                    <span className="conn-row-sep"> &bull; </span>
+                    <span className="conn-row-provider">{row.provider}</span>
                   </div>
+                  <p className="conn-row-desc">{row.desc}</p>
                 </div>
-                <div className="conn-item-right">
-                  {svc.required && <span className="conn-badge conn-badge--required">Required</span>}
+                <div className="conn-row-right">
+                  <span
+                    className={
+                      row.required
+                        ? "conn-row-label conn-row-label--required"
+                        : "conn-row-label conn-row-label--optional"
+                    }
+                  >
+                    {row.required ? "Required" : "Optional"}
+                  </span>
                   <button className="conn-connect-btn">Connect</button>
                 </div>
               </div>
             ))}
           </div>
-        </div>
+
+          {/* Bottom notice */}
+          <div className="conn-notice">
+            Required services must be connected before your sprint starts.
+            Optional services can be added anytime from your project board.
+          </div>
         </div>
       </div>
 
@@ -76,7 +113,7 @@ export default function ConnectionsPage() {
           <ArrowLeft size={16} /> Go back
         </button>
         <StepIndicator current={3} />
-        <button className="btn-next" onClick={() => router.push("/review")}>
+        <button className="btn-next" onClick={() => router.push("/onboarding/review")}>
           Review your order <ArrowRight size={16} />
         </button>
       </div>
